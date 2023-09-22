@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<form action="/login" class="w3-container w3-round-large w3-light-grey" method="post">
+    <div class="w3-panel">
+        <h1>LOGIN</h1>
+    </div>
+    <div class="w3-panel">
+    <div class="w3-container">
+        <i class="glyphicon glyphicon-user"></i>
+        <input autofocus autocomplete="off" class="w3-input w3-border w3-animate-input" style="width:80%; color: black;" id="username" name="username" placeholder="Username" type="text">
+    </div>
+    </div>
+
+
+    <div class="w3-panel">
+    <div class="w3-container">
+        <i class="glyphicon glyphicon-lock"></i>
+        <input class="w3-input w3-border w3-animate-input" style="width:80%; color: black;" id="password" name="password" placeholder="Password" type="password">
+    </div>
+    </div>
+    <div class="w3-panel">
+    <button class="w3-button w3-round-large w3-pale-blue" type="submit">LOGIN</button>
+    </div>
+</form>
+</div>
+{% endblock %}

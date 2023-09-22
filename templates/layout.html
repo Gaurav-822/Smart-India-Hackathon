@@ -7,6 +7,8 @@
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- W3 CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Smart-India-Hackathon</title>
 
 </head>
@@ -18,7 +20,7 @@
           <!-- Links -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">HOME</a>
+              <a class="nav-link" href="/">HOME</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Lorem</a>
@@ -29,7 +31,15 @@
           </ul>
         </div>
         <form class="d-flex">
-            <button class="btn btn-primary" type="button">Login/Resgister</button>
+          {% if session['user_id'] %}
+          <a href="/logout">
+            <button class="btn btn-primary" type="button">Log Out</button>
+          </a>
+          {% else %}
+          <a href="/register">
+            <button class="btn btn-primary" type="button">Resgister</button>
+          </a>
+          {% endif %}
         </form>
       
       </nav>
