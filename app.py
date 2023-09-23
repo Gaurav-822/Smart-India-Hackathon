@@ -32,7 +32,6 @@ users = Table(
     Column('id', Integer, primary_key = True),
     Column('username', Text),
     Column('hash', Text),
-    Column('password', Text),
     Column('phone', Text),
     Column('aadhaar', Text)
 )
@@ -79,7 +78,7 @@ def register():
     if phone in res:
         return render_template('apology.html', txt='This phone no. is already registered!, Try to login with this no. of register with another no.')
     
-    ins = users.insert().values(username = username, hash = generate_password_hash(password), phone = phone, aadhaar = 'Na')
+    ins = users.insert().values(username = username, hash = generate_password_hash(password), phone = phone, aadhaar = None)
     conn.execute(ins)
 
     session['user_id'] = id
@@ -112,3 +111,35 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    # get data from table
+    query = users.select().where(id == session['user_id'])
+    results = conn.execute(query)
+    cred = ()
+    for i in results:
+        cred = i
+    name_t = cred[1]
+    phone_t = cred[3]
+    aadhaar_t = cred[4]
+
+    if request.method == 'GET':
+        return render_template('profile.html', name=name_t, phone=phone_t, aadhaar=aadhaar_t)
+    
+    # get data from form
+    name = request.form.get('username')
+    if name == None:
+        name = name_t
+    phone = request.form.get('phone')
+    if phone == None:
+        phone == phone_t
+    aadhaar = request.form.get('aadhaar')
+    if aadhaar == None:
+        aadhaar = aadhaar_t
+
+    # Implementation of the Logic
+    update = users.update().values(username=name, phone=phone, aadhaar=aadhaar).where(id == session['user_id'])
+    conn.execute(update)
+
+    return render_template('index.html')

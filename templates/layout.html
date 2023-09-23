@@ -32,6 +32,9 @@
         </div>
         <form class="d-flex">
           {% if session['user_id'] %}
+          <a href="/profile">
+            <button class="btn btn-primary" type="button">Profile</button>
+          </a>
           <a href="/logout">
             <button class="btn btn-primary" type="button">Log Out</button>
           </a>

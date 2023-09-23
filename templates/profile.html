@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<form action="/profile" class="w3-container w3-round-large w3-light-grey" method="post">
+    <div class="w3-panel">
+        <h1>Update Your Profile</h1>
+        <h3>Complete your profile</h3>
+    </div>
+    <div class="w3-panel">
+    <div class="w3-container">
+        <i class="glyphicon glyphicon-user"></i>
+        <h4>NAME: </h4> 
+        <input autofocus autocomplete="off" class="w3-input w3-border w3-animate-input" style="width:80%; color: black;" id="username" name="username" placeholder={{name}} type="text">
+    </div>
+    </div>
+
+    <div class="w3-panel">
+        <div class="w3-container">
+            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+            <h4>PHONE NO: </h4>
+            <input autofocus autocomplete="off" class="w3-input w3-border w3-animate-input" style="width:80%; color: black;" id="phone" name="phone" placeholder={{phone}} type="text">
+
+        </div>
+    </div>
+
+    <div class="w3-panel">
+        <div class="w3-container">
+            <i class="fa fa-id-card-o" aria-hidden="true"></i>
+            <h4>AADHAAR: </h4>
+            <input autofocus autocomplete="off" class="w3-input w3-border w3-animate-input" style="width:80%; color: black;" id="aadhaar" name="aadhaar" placeholder={{aadhaar}} type="text">
+
+        </div>
+    </div>
+
+
+    <div class="w3-panel">
+    <button class="w3-button w3-round-large w3-pale-blue" type="submit">UPDATE</button>
+    </div>
+</form>
+</div>
+{% endblock %}
