@@ -129,17 +129,17 @@ def profile():
     
     # get data from form
     name = request.form.get('username')
-    if name == None:
+    if name == '':
         name = name_t
     phone = request.form.get('phone')
-    if phone == None:
-        phone == phone_t
+    if phone == '':
+        phone = phone_t
     aadhaar = request.form.get('aadhaar')
-    if aadhaar == None:
+    if aadhaar == '':
         aadhaar = aadhaar_t
 
     # Implementation of the Logic
     update = users.update().values(username=name, phone=phone, aadhaar=aadhaar).where(id == session['user_id'])
     conn.execute(update)
 
-    return render_template('index.html')
+    return render_template('profile.html', name=name, phone=phone, aadhaar=aadhaar)
